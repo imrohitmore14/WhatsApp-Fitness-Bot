@@ -11,7 +11,7 @@ from twilio.rest import Client
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.jobstores.base import ConflictingIdError
-from pytz import timezone
+import pytz
 import logging
 
 # Load environment variables from .env file
@@ -19,13 +19,27 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Setup logging
+# Set up logging
+class ISTFormatter(logging.Formatter):
+    def converter(self, timestamp):
+        ist = pytz.timezone("Asia/Kolkata")
+        dt = datetime.fromtimestamp(timestamp, tz=ist)
+        return dt
+
+    def formatTime(self, record, datefmt=None):
+        dt = self.converter(record.created)
+        if datefmt:
+            return dt.strftime(datefmt)
+        return dt.isoformat()
+
+# Set up logging with IST formatter
 LOG_FILE = 'notification_logs.log'
-logging.basicConfig(
-    filename=LOG_FILE,
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-)
+formatter = ISTFormatter('%(asctime)s - %(levelname)s - %(message)s')
+
+file_handler = logging.FileHandler(LOG_FILE)
+file_handler.setFormatter(formatter)
+
+logging.basicConfig(level=logging.INFO, handlers=[file_handler])
 
 # Load workout data
 with open('workouts.json', 'r') as f:
@@ -151,13 +165,26 @@ def get_logs():
         return str(e), 500
 
 # Schedule reminders
-scheduler = BackgroundScheduler(timezone=timezone('Asia/Kolkata'))
-scheduler.add_job(send_whatsapp_message, 'cron', hour=7, minute=0)   # Morning WhatsApp
-scheduler.add_job(send_whatsapp_message, 'cron', hour=17, minute=0)  # Evening WhatsApp
-scheduler.add_job(send_email_message, 'cron', hour=7, minute=0)      # Morning Email
-scheduler.add_job(send_email_message, 'cron', hour=17, minute=0)     # Evening Email
-scheduler.add_job(send_log_report, 'cron', day_of_week='sun', hour=21, minute=0)  # Weekly log email
-scheduler.start()
+scheduler = BackgroundScheduler(timezone=pytz.timezone('Asia/Kolkata'))
+
+try:
+    scheduler.add_job(send_whatsapp_message, 'cron', hour=7, minute=0, id='whatsapp_morning')
+    scheduler.add_job(send_whatsapp_message, 'cron', hour=17, minute=0, id='whatsapp_evening')
+    scheduler.add_job(send_email_message, 'cron', hour=7, minute=0, id='email_morning')
+    scheduler.add_job(send_email_message, 'cron', hour=17, minute=0, id='email_evening')
+    scheduler.add_job(send_log_report, 'cron', day_of_week='sun', hour=21, minute=0, id='weekly_log')
+except ConflictingIdError:
+    pass  
+
+# Prevent duplicate jobs if already added
+
+# Start scheduler only if not already running
+if __name__ != '__main__' and not scheduler.running:
+    scheduler.start()
+    logging.info("Scheduler started (production)")
 
 if __name__ == '__main__':
+    if not scheduler.running:
+        scheduler.start()
+        logging.info("Scheduler started (local)")
     app.run(debug=True)

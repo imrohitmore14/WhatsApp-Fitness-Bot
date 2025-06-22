@@ -9,6 +9,9 @@ from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
 from twilio.rest import Client
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.jobstores.base import ConflictingIdError
+from pytz import timezone
 import logging
 
 # Load environment variables from .env file
@@ -133,7 +136,7 @@ def get_logs():
         return str(e), 500
 
 # Schedule reminders
-scheduler = BackgroundScheduler()
+scheduler = BackgroundScheduler(timezone=timezone('Asia/Kolkata'))
 scheduler.add_job(send_whatsapp_message, 'cron', hour=7, minute=0)   # Morning WhatsApp
 scheduler.add_job(send_whatsapp_message, 'cron', hour=17, minute=0)  # Evening WhatsApp
 scheduler.add_job(send_email_message, 'cron', hour=7, minute=0)      # Morning Email

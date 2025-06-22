@@ -59,6 +59,13 @@ def send_email_message():
     today = datetime.today().strftime('%A')
     body = format_workout_message(today)
 
+    # Add useful links to the email message
+    body += (
+        "\n\n🔗 Useful Links:\n"
+        "📬 Send Workout Manually: https://whatsapp-fitness-bot.onrender.com/send-today-workout\n"
+        "📄 View Logs: https://whatsapp-fitness-bot.onrender.com/logs"
+    )
+
     msg = MIMEMultipart()
     msg['From'] = EMAIL_ADDRESS
     msg['To'] = EMAIL_TO
@@ -81,6 +88,14 @@ def send_email_message():
 def send_whatsapp_message():
     today = datetime.today().strftime('%A')
     body = format_workout_message(today)
+
+    # Add useful links to the WhatsApp message
+    body += (
+        "\n\n🔗 *Useful Links:*\n"
+        "📬 Send Workout Manually: https://whatsapp-fitness-bot.onrender.com/send-today-workout\n"
+        "📄 View Logs: https://whatsapp-fitness-bot.onrender.com/logs"
+    )
+
     client = Client(ACCOUNT_SID, AUTH_TOKEN)
 
     try:

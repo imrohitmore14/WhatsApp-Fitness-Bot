@@ -1,0 +1,286 @@
+{
+  "Monday": [
+    {
+      "exercise": "Barbell Flat Bench Press",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Barbell Incline Bench Press",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Barbell Decline Bench Press",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Pec Deck Fly",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    }
+  ],
+  "Tuesday": [
+    {
+      "exercise": "Lat Pull Down (Wide Grip)",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Lat Pull Down (Close Grip)",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Seated Cable Row",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Deadlift",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    }
+  ],
+  "Wednesday": [
+    {
+      "exercise": "Dumbbell Bicep Curl",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Hammer Curl",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "EZ Bar Curl (Close grip)",
+      "sets": [
+        { "weight": "2.5 kg", "reps": "15" },
+        { "weight": "2.5 kg", "reps": "12" },
+        { "weight": "5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Bicep Preacher Curl",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Hammer Preacher Curl",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Seated Barbell Wrist Curl",
+      "sets": [
+        { "weight": "2.5 kg", "reps": "15" },
+        { "weight": "2.5 kg", "reps": "12" },
+        { "weight": "5 kg", "reps": "10" }
+      ]
+    }
+  ],
+  "Thursday": [
+    {
+      "exercise": "Triceps Dips",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Overhead Extension",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Skull Crushers",
+      "sets": [
+        { "weight": "2.5 kg", "reps": "15" },
+        { "weight": "2.5 kg", "reps": "12" },
+        { "weight": "5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Pully Push Down",
+      "sets": [
+        { "weight": "15 kg", "reps": "15" },
+        { "weight": "15 kg", "reps": "12" },
+        { "weight": "20 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Situps",
+      "sets": [
+        { "weight": "bodyweight", "reps": "15" },
+        { "weight": "bodyweight", "reps": "12" },
+        { "weight": "bodyweight", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Bicycle Crunches",
+      "sets": [
+        { "weight": "bodyweight", "reps": "15" },
+        { "weight": "bodyweight", "reps": "12" },
+        { "weight": "bodyweight", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Hanging Knee & Leg Raises",
+      "sets": [
+        { "weight": "bodyweight", "reps": "15" },
+        { "weight": "bodyweight", "reps": "12" },
+        { "weight": "bodyweight", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Plank",
+      "sets": [
+        { "weight": "bodyweight", "reps": "30 sec" },
+        { "weight": "bodyweight", "reps": "45 sec" },
+        { "weight": "bodyweight", "reps": "60 sec" }
+      ]
+    }
+  ],
+  "Friday": [
+    {
+      "exercise": "Dumbbell Side Raise",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Front Raise",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Shoulder Press (Seated)",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Front Raise (Cable)",
+      "sets": [
+        { "weight": "15 kg", "reps": "15" },
+        { "weight": "15 kg", "reps": "12" },
+        { "weight": "20 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Face Pulls",
+      "sets": [
+        { "weight": "15 kg", "reps": "15" },
+        { "weight": "15 kg", "reps": "12" },
+        { "weight": "20 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Shrugs",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    }
+  ],
+  "Saturday": [
+    {
+      "exercise": "Barbell Squat (Back)",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Dumbbell Lunges",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Leg Press",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "30 kg", "reps": "12" },
+        { "weight": "40 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Leg Extension",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Leg Curl",
+      "sets": [
+        { "weight": "20 kg", "reps": "15" },
+        { "weight": "20 kg", "reps": "12" },
+        { "weight": "25 kg", "reps": "10" }
+      ]
+    },
+    {
+      "exercise": "Weighted Calf Raise",
+      "sets": [
+        { "weight": "5 kg", "reps": "15" },
+        { "weight": "5 kg", "reps": "12" },
+        { "weight": "7.5 kg", "reps": "10" }
+      ]
+    }
+  ]
+}

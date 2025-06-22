@@ -1,0 +1,11 @@
+# Ignore Python virtual environments
+.venv/
+
+# Ignore environment variables
+.env
+
+# Ignore Python cache and logs
+__pycache__/
+*.pyc
+.vscode/
+notification_logs.log

@@ -163,6 +163,15 @@ def get_logs():
             return f.read(), 200, {'Content-Type': 'text/plain'}
     except Exception as e:
         return str(e), 500
+    
+# Flask route to wake up the app
+# This is useful for keeping the app alive on platforms like Render
+@app.route('/wake-up', methods=['GET'])
+def wake_up():
+    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(f"⚡ Wake-up ping received at {now}")
+    logging.info(f"Wake-up ping received at {now}")
+    return jsonify({"status": "App is awake", "time": now})
 
 # Schedule reminders
 scheduler = BackgroundScheduler(timezone=pytz.timezone('Asia/Kolkata'))
@@ -170,8 +179,10 @@ scheduler = BackgroundScheduler(timezone=pytz.timezone('Asia/Kolkata'))
 try:
     scheduler.add_job(send_whatsapp_message, 'cron', hour=7, minute=0, id='whatsapp_morning')
     scheduler.add_job(send_whatsapp_message, 'cron', hour=17, minute=0, id='whatsapp_evening')
+    
     scheduler.add_job(send_email_message, 'cron', hour=7, minute=0, id='email_morning')
     scheduler.add_job(send_email_message, 'cron', hour=17, minute=0, id='email_evening')
+
     scheduler.add_job(send_log_report, 'cron', day_of_week='sun', hour=21, minute=0, id='weekly_log')
 except ConflictingIdError:
     pass  

@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from datetime import datetime
 import json
 import os
@@ -151,7 +151,7 @@ def send_log_report():
 # Flask route to get today's workout
 @app.route('/manual/trigger-workout', methods=['GET','POST'])
 def manual_trigger_workout():
-    token = requests.args.get('token')
+    token = request.args.get('token')
     if token != os.getenv("MANUAL_TRIGGER_TOKEN"):
         return jsonify({"error": "Unauthorized"}), 401
 

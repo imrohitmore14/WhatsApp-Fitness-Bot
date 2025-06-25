@@ -76,7 +76,7 @@ def send_email_message():
     # Add useful links to the email message
     body += (
         "\n\n🔗 Useful Links:\n"
-        "📬 Send Workout Manually: https://whatsapp-fitness-bot.onrender.com/send-today-workout\n"
+        "📬 Send Workout Manually: https://whatsapp-fitness-bot.onrender.com/manual/trigger-workout?token=secure123\n"
         "📄 View Logs: https://whatsapp-fitness-bot.onrender.com/logs"
     )
 
@@ -106,7 +106,7 @@ def send_whatsapp_message():
     # Add useful links to the WhatsApp message
     body += (
         "\n\n🔗 *Useful Links:*\n"
-        "📬 Send Workout Manually: https://whatsapp-fitness-bot.onrender.com/send-today-workout\n"
+        "📬 Send Workout Manually: https://whatsapp-fitness-bot.onrender.com/manual/trigger-workout?token=secure123\n"
         "📄 View Logs: https://whatsapp-fitness-bot.onrender.com/logs"
     )
 
@@ -149,12 +149,16 @@ def send_log_report():
         logging.error(f"Failed to send weekly log report: {e}")
 
 # Flask route to get today's workout
-@app.route('/send-today-workout', methods=['GET'])
-def trigger_workout():
+@app.route('/manual/trigger-workout', methods=['POST'])
+def manual_trigger_workout():
+    token = requests.args.get('token')
+    if token != os.getenv("MANUAL_TRIGGER_TOKEN"):
+        return jsonify({"error": "Unauthorized"}), 401
+
     send_whatsapp_message()
     send_email_message()
-    return jsonify({"status": "Messages sent successfully."})
 
+    return jsonify({"status": "Messages sent manually."})
 
 @app.route('/logs', methods=['GET'])
 def get_logs():
@@ -168,10 +172,9 @@ def get_logs():
 # This is useful for keeping the app alive on platforms like Render
 @app.route('/wake-up', methods=['GET'])
 def wake_up():
-    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    print(f"⚡ Wake-up ping received at {now}")
+    now = datetime.now().astimezone(pytz.timezone('Asia/Kolkata')).strftime('%Y-%m-%d %H:%M:%S')
     logging.info(f"Wake-up ping received at {now}")
-    return jsonify({"status": "App is awake", "time": now})
+    return "OK", 200
 
 # Schedule reminders
 scheduler = BackgroundScheduler(timezone=pytz.timezone('Asia/Kolkata'))

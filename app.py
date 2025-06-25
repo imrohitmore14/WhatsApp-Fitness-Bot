@@ -149,7 +149,7 @@ def send_log_report():
         logging.error(f"Failed to send weekly log report: {e}")
 
 # Flask route to get today's workout
-@app.route('/manual/trigger-workout', methods=['POST'])
+@app.route('/manual/trigger-workout', methods=['GET','POST'])
 def manual_trigger_workout():
     token = requests.args.get('token')
     if token != os.getenv("MANUAL_TRIGGER_TOKEN"):

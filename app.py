@@ -149,15 +149,33 @@ def send_log_report():
         logging.error(f"Failed to send weekly log report: {e}")
 
 # Flask route to get today's workout
-@app.route('/manual/trigger-workout', methods=['GET','POST'])
+@app.route('/manual/trigger-workout', methods=['GET', 'POST'])
 def manual_trigger_workout():
+    user_agent = request.headers.get('User-Agent', '').lower()
+
+    # Block known preview bots and link scanners
+    known_bots = [
+        "facebookexternalhit",
+        "whatsapp",
+        "telegrambot",
+        "twitterbot",
+        "slackbot",
+        "linkedinbot",
+        "discordbot",
+        "embedly"
+    ]
+
+    if any(bot in user_agent for bot in known_bots):
+        logging.info(f"🔒 Blocked bot User-Agent from triggering: {user_agent}")
+        return jsonify({"status": "Bot ignored"}), 200
+
     token = request.args.get('token')
     if token != os.getenv("MANUAL_TRIGGER_TOKEN"):
         return jsonify({"error": "Unauthorized"}), 401
 
+    logging.info("🚀 Manual trigger invoked by user.")
     send_whatsapp_message()
     send_email_message()
-
     return jsonify({"status": "Messages sent manually."})
 
 @app.route('/logs', methods=['GET'])
